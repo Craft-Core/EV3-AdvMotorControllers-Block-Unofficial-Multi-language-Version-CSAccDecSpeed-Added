@@ -384,6 +384,8 @@
 			<Parameter Name="BaseSpeed" Identification="builtin://Identification_Speed_Plus75.png" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
 			<Parameter Name="MinSpeed" Identification="builtin://Identification_Speed_Plus25.png" DataType="Single" Direction="Input" DefaultValue="10" MinValue="0" MaxValue="100"/>
 			<Parameter Name="MaxError" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="100"/>
+			<Parameter Name="SmoothEnable" Identification="builtin://Identification_Logic.png" DataType="Single" Direction="Input" DefaultValue="0" MinValue="0" MaxValue="1"/>
+			<Parameter Name="SmoothLevel" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="10" MinValue="1" MaxValue="100"/>
 			<Parameter Name="SpeedOut" Identification="builtin://Identification_Speed_Plus75.png" DataType="Single" Direction="Output"/>
 			<Parameter Name="CS1Out" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Output"/>
 			<Parameter Name="CS2Out" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Output"/>
@@ -453,6 +455,8 @@
 				<ParameterReference Name="BaseSpeed"/>
 				<ParameterReference Name="MinSpeed"/>
 				<ParameterReference Name="MaxError"/>
+				<ParameterReference Name="SmoothEnable"/>
+				<ParameterReference Name="SmoothLevel"/>
 				<PaletteInfo Weight="0.5"/>
 				<Flags>PBROnly</Flags>
 			</Block>

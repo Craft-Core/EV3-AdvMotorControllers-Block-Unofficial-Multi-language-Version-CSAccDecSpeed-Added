@@ -240,6 +240,12 @@
             <Parameter Name="MaxError" DisplayName="Maximum Error">
                 <Description><![CDATA[<p>Maximum error</p>]]></Description>
             </Parameter>
+            <Parameter Name="SmoothEnable" DisplayName="Smooth Enable">
+                <Description><![CDATA[<p>Enable smooth speed transition (0=Off, 1=On)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="SmoothLevel" DisplayName="Smooth Level">
+                <Description><![CDATA[<p>Smoothness level (1=instant, 100=very gradual)</p>]]></Description>
+            </Parameter>
             <Parameter Name="SpeedOut" DisplayName="Speed Output">
                 <Description><![CDATA[<p>Speed output</p>]]></Description>
             </Parameter>

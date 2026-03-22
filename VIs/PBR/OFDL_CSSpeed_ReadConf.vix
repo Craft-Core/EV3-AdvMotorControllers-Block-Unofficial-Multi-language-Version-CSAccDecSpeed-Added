@@ -7,6 +7,8 @@
             <DataItem Name="BaseSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="0" />
             <DataItem Name="MinSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="1" />
             <DataItem Name="MaxError" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="2" />
+            <DataItem Name="SmoothEnable" DataType="Single" DefaultTerminalDirection="Input" CallUsage="Optional" CallDirection="Output" CallIndex="3" />
+            <DataItem Name="SmoothLevel" DataType="Single" DefaultTerminalDirection="Input" CallUsage="Optional" CallDirection="Output" CallIndex="4" />
             <FrontPanel>
                 <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
             </FrontPanel>
@@ -25,6 +27,12 @@
                 </DataAccessor>
                 <DataAccessor DataItem="MaxError" Id="n12" Bounds="400 448 70 14">
                     <Terminal Id="Numeric" Direction="Input" Wire="wMER" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="SmoothEnable" Id="n13" Bounds="400 548 70 14">
+                    <Terminal Id="Numeric" Direction="Input" Wire="wSME" Hotspot="0 0.5" Bounds="0 0 70 14" />
+                </DataAccessor>
+                <DataAccessor DataItem="SmoothLevel" Id="n14" Bounds="400 648 70 14">
+                    <Terminal Id="Numeric" Direction="Input" Wire="wSML" Hotspot="0 0.5" Bounds="0 0 70 14" />
                 </DataAccessor>
                 <ConfigurableMethodCall Id="n4" Bounds="260 213 101 91" Target="X3\.Lib:GlobalGetSingle">
                     <ConfigurableMethodTerminal>
@@ -56,13 +64,37 @@
                     <Terminal Id="SequenceIn" Direction="Input" Wire="wS3" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
                     <Terminal Id="SequenceOut" Direction="Output" Wire="wS4" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
                 </ConfigurableMethodCall>
+                <ConfigurableMethodCall Id="n7" Bounds="260 513 101 91" Target="X3\.Lib:GlobalGetSingle">
+                    <ConfigurableMethodTerminal>
+                        <Terminal Id="valueOut" Direction="Output" Wire="wSME" DataType="Single" Hotspot="0.5 1" Bounds="54 56 30 27" />
+                    </ConfigurableMethodTerminal>
+                    <ConfigurableMethodTerminal ConfiguredValue="OFDLCS_SMOOTH">
+                        <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
+                    </ConfigurableMethodTerminal>
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="wS4" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="wS5" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
+                </ConfigurableMethodCall>
+                <ConfigurableMethodCall Id="n8" Bounds="260 613 101 91" Target="X3\.Lib:GlobalGetSingle">
+                    <ConfigurableMethodTerminal>
+                        <Terminal Id="valueOut" Direction="Output" Wire="wSML" DataType="Single" Hotspot="0.5 1" Bounds="54 56 30 27" />
+                    </ConfigurableMethodTerminal>
+                    <ConfigurableMethodTerminal ConfiguredValue="OFDLCS_SMOOTHLVL">
+                        <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
+                    </ConfigurableMethodTerminal>
+                    <Terminal Id="SequenceIn" Direction="Input" Wire="wS5" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
+                    <Terminal Id="SequenceOut" Direction="Output" Wire="wS6" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
+                </ConfigurableMethodCall>
                 <Wire Id="wS1" Joints="N(n21:Value) N(n4:SequenceIn)" />
                 <Wire Id="wS2" Joints="N(n4:SequenceOut) N(n5:SequenceIn)" />
                 <Wire Id="wS3" Joints="N(n5:SequenceOut) N(n6:SequenceIn)" />
-                <Wire Id="wS4" Joints="N(n6:SequenceOut) N(n22:Value)" />
+                <Wire Id="wS4" Joints="N(n6:SequenceOut) N(n7:SequenceIn)" />
+                <Wire Id="wS5" Joints="N(n7:SequenceOut) N(n8:SequenceIn)" />
+                <Wire Id="wS6" Joints="N(n8:SequenceOut) N(n22:Value)" />
                 <Wire Id="wBSP" Joints="N(n4:valueOut) N(n10:Numeric)" />
                 <Wire Id="wMSP" Joints="N(n5:valueOut) N(n11:Numeric)" />
                 <Wire Id="wMER" Joints="N(n6:valueOut) N(n12:Numeric)" />
+                <Wire Id="wSME" Joints="N(n7:valueOut) N(n13:Numeric)" />
+                <Wire Id="wSML" Joints="N(n8:valueOut) N(n14:Numeric)" />
             </BlockDiagram>
             <Icon>
                 <Model:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="98" Width="56">

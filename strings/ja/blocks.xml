@@ -240,6 +240,12 @@
             <Parameter Name="MaxError" DisplayName="最大誤差">
                 <Description><![CDATA[<p>最大誤差</p>]]></Description>
             </Parameter>
+            <Parameter Name="SmoothEnable" DisplayName="スムーズ有効">
+                <Description><![CDATA[<p>スムーズ速度変化のOn/Off (0=Off, 1=On)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="SmoothLevel" DisplayName="スムーズ度">
+                <Description><![CDATA[<p>スムーズ度合い (1=即時変化, 100=非常に緩やか)</p>]]></Description>
+            </Parameter>
             <Parameter Name="SpeedOut" DisplayName="速度出力">
                 <Description><![CDATA[<p>速度出力</p>]]></Description>
             </Parameter>
