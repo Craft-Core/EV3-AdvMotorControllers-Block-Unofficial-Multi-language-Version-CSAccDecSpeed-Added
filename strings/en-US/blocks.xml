@@ -256,23 +256,23 @@
                 <Description><![CDATA[<p>Color sensor output</p>]]></Description>
             </Parameter>
             <Description><![CDATA[<p>Calculates motor speed based on the difference between two color sensor values for PD line following.</p>]]></Description>
-            <Block Mode="CS_Linear" DisplayName="CS Linear Speed">
-                <Description><![CDATA[<p>Linearly reduces speed proportional to the color sensor error. Recommended for most line-following tasks.</p>]]></Description>
+            <Block Mode="CS_Linear" DisplayName="CS Linear Speed 3/5 Versatile / Beginner-Friendly">
+                <Description><![CDATA[<p><b>[Linear] Speed decreases in direct proportion to error.</b><br/>Stability: 3/5  Speed: 3/5  Ease of Tuning: 5/5<br/>Predictable behavior and easy to tune. A well-balanced mode suitable for beginners and advanced users alike. Great starting point for building your PD line-follower.</p>]]></Description>
             </Block>
-            <Block Mode="CS_Quadratic" DisplayName="CS Quadratic Speed">
-                <Description><![CDATA[<p>Reduces speed with the square of the error. Stays fast near the line and drops quickly when off-track.</p>]]></Description>
+            <Block Mode="CS_Quadratic" DisplayName="CS Quadratic Speed 3/5 Fast / Sharp Response">
+                <Description><![CDATA[<p><b>[Quadratic] Speed decreases with the square of the error.</b><br/>Stability: 3/5  Speed: 4/5  Ease of Tuning: 3/5<br/>Maintains high speed near the line and brakes sharply when off-track. More aggressive than Linear. May oscillate on courses with large deviations.</p>]]></Description>
             </Block>
-            <Block Mode="CS_Sqrt" DisplayName="CS Sqrt Speed">
-                <Description><![CDATA[<p>Reduces speed with the square root of the error. Drops quickly for small errors, gentler for large ones.</p>]]></Description>
+            <Block Mode="CS_Sqrt" DisplayName="CS Sqrt Speed 4/5 Stable / Gentle">
+                <Description><![CDATA[<p><b>[Square Root] Speed decreases with the square root of the error.</b><br/>Stability: 4/5  Speed: 3/5  Ease of Tuning: 4/5<br/>Drops speed quickly even for small errors, providing high stability. Responds more gently to large errors. Good for courses with many curves.</p>]]></Description>
             </Block>
-            <Block Mode="CS_Step" DisplayName="CS Step Speed">
-                <Description><![CDATA[<p>Uses three discrete speed levels based on error thresholds. Easy to tune manually.</p>]]></Description>
+            <Block Mode="CS_Step" DisplayName="CS Step Speed 2/5 Simple / Manual Tuning">
+                <Description><![CDATA[<p><b>[Step] Switches between three discrete speed levels based on error thresholds.</b><br/>Stability: 2/5  Speed: 3/5  Ease of Tuning: 5/5<br/>Simple logic and easy to understand. However, abrupt speed switching can cause oscillation. Best suited for manual threshold tuning experiments.</p>]]></Description>
             </Block>
-                        <Block Mode="CS_Cubic" DisplayName="CS Cubic Speed ★★★★★ Best for competition">
-                <Description><![CDATA[<p>Reduces speed with the cube of the error. Stays at maximum speed near the line and drops steeply when off-track. Recommended most for competition fastest-lap scenarios.</p>]]></Description>
+                        <Block Mode="CS_Cubic" DisplayName="CS Cubic Speed 5/5 Best for Competition">
+                <Description><![CDATA[<p><b>[Cubic] Speed decreases with the cube of the error.</b><br/>Stability: 2/5  Speed: 5/5  Ease of Tuning: 2/5<br/>Maintains near-maximum speed on the line and drops steeply when off-track. Speed-first mode for competition. Hard to tune — may oscillate if settings are off. Recommended for advanced users.</p>]]></Description>
             </Block>
-            <Block Mode="CS_Smooth" DisplayName="CS Smooth Speed ★★★★ Stable recommended">
-                <Description><![CDATA[<p>Uses smoothstep curve (3t-2t3) for speed reduction. No abrupt speed changes - accelerates and decelerates smoothly. Best for stable line following.</p>]]></Description>
+            <Block Mode="CS_Smooth" DisplayName="CS Smooth Speed 4/5 Stable Recommended">
+                <Description><![CDATA[<p><b>[Smoothstep] Speed decreases using a smoothstep curve (3t²-2t³).</b><br/>Stability: 5/5  Speed: 3/5  Ease of Tuning: 4/5<br/>No abrupt speed changes — acceleration and deceleration are gradual and smooth. Resistant to oscillation and easy to handle. Best choice when stability is the priority.</p>]]></Description>
             </Block>
             <Block Mode="Configuration" DisplayName="Configuration">
                 <Description><![CDATA[<p>Sets BaseSpeed, MinSpeed, and MaxError configuration values for the Color Sensor Speed Controller.</p>]]></Description>

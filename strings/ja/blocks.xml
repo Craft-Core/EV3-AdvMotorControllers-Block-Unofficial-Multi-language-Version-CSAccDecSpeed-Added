@@ -256,23 +256,23 @@
                 <Description><![CDATA[<p>カラーセンサー出力</p>]]></Description>
             </Parameter>
             <Description><![CDATA[<p>2つのカラーセンサーの差に基づいてモーター速度を計算します（PDラインフォロー用）。</p>]]></Description>
-            <Block Mode="CS_Linear" DisplayName="CS 線形速度">
-                <Description><![CDATA[<p>誤差に比例して速度を線形に減少させます。ほとんどのラインフォロー用途に最適です。</p>]]></Description>
+            <Block Mode="CS_Linear" DisplayName="CS 線形速度 3/5 万能・初心者向け">
+                <Description><![CDATA[<p><b>【線形】誤差に正比例して速度を減少させます。</b><br/>安定性:3/5　速度:3/5　調整しやすさ:5/5<br/>動作が予測しやすく調整も簡単。初心者から上級者まで使いやすいバランス型。コースや目標に応じてKp・Kd・BaseSpeedをチューニングするベースとして最適。</p>]]></Description>
             </Block>
-            <Block Mode="CS_Quadratic" DisplayName="CS 二次速度">
-                <Description><![CDATA[<p>誤差の2乗で速度を減少させます。ライン付近では速く、外れると急減速します。</p>]]></Description>
+            <Block Mode="CS_Quadratic" DisplayName="CS 二次速度 3/5 高速型・鋭い反応">
+                <Description><![CDATA[<p><b>【二次】誤差の2乗で速度を減少させます。</b><br/>安定性:3/5　速度:4/5　調整しやすさ:3/5<br/>ライン付近では高速を維持し、外れたときに鋭く減速します。線形より積極的な走行が可能ですが、振れが大きいコースでは振動しやすくなります。</p>]]></Description>
             </Block>
-            <Block Mode="CS_Sqrt" DisplayName="CS 平方根速度">
-                <Description><![CDATA[<p>誤差の平方根で速度を減少させます。最初は急に、その後ゆっくり減速します。</p>]]></Description>
+            <Block Mode="CS_Sqrt" DisplayName="CS 平方根速度 4/5 安定型・穏やか">
+                <Description><![CDATA[<p><b>【平方根】誤差の平方根で速度を減少させます。</b><br/>安定性:4/5　速度:3/5　調整しやすさ:4/5<br/>小さな誤差でも素早く減速するため安定感が高く、大きな誤差への対応は比較的穏やか。曲線が多いコースやカーブの多い場面に向きます。</p>]]></Description>
             </Block>
-            <Block Mode="CS_Step" DisplayName="CS ステップ速度">
-                <Description><![CDATA[<p>誤差のしきい値に基づいて3段階の速度を使用します。手動チューニングが簡単です。</p>]]></Description>
+            <Block Mode="CS_Step" DisplayName="CS ステップ速度 2/5 シンプル・手動チューニング向け">
+                <Description><![CDATA[<p><b>【ステップ】しきい値に基づき3段階の速度に切り替えます。</b><br/>安定性:2/5　速度:3/5　調整しやすさ:5/5<br/>速度が高・中・低の3段階に分かれているためロジックがシンプルで分かりやすい。ただし速度の切り替えが急なため滑らかさに欠け、振動しやすい場面があります。</p>]]></Description>
             </Block>
-                        <Block Mode="CS_Cubic" DisplayName="CS 3乗速度 ★★★★★競技最速向け">
-                <Description><![CDATA[<p>誤差の3乗で速度を減少させます。ライン付近では最高速を維持し、大きくずれると急激に減速します。競技での最速タイムを目指す場合に最もおすすめです。</p>]]></Description>
+                        <Block Mode="CS_Cubic" DisplayName="CS 3乗速度 5/5 競技最速向け">
+                <Description><![CDATA[<p><b>【3乗】誤差の3乗で速度を減少させます。</b><br/>安定性:2/5　速度:5/5　調整しやすさ:2/5<br/>ライン上では最高速をほぼ維持し、外れたとき急激に減速します。速さを最優先した競技向けのモード。チューニングが難しく、セッティングが合わないと振動しやすいため上級者向け。</p>]]></Description>
             </Block>
-            <Block Mode="CS_Smooth" DisplayName="CS スムーズ速度 ★★★★安定走行推奨">
-                <Description><![CDATA[<p>スムーズステップ（3t²-2t³）で速度を減少させます。急な速度変化がなく滑らかに加減速します。安定したライン追従に最適です。</p>]]></Description>
+            <Block Mode="CS_Smooth" DisplayName="CS スムーズ速度 4/5 安定走行推奨">
+                <Description><![CDATA[<p><b>【スムーズステップ】スムーズステップ曲線（3t²-2t³）で速度を減少させます。</b><br/>安定性:5/5　速度:3/5　調整しやすさ:4/5<br/>急な速度変化がなく、加減速が滑らかで安定しています。振動しにくく扱いやすいため、安定した走行を重視する場合に最適です。</p>]]></Description>
             </Block>
             <Block Mode="Configuration" DisplayName="設定">
                 <Description><![CDATA[<p>カラーセンサー速度コントローラーのBaseSpeed、MinSpeed、MaxErrorを設定します。</p>]]></Description>
