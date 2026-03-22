@@ -7,7 +7,7 @@
             <DataItem Name="BaseSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="0" />
             <DataItem Name="MinSpeed" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="1" />
             <DataItem Name="MaxError" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Output" CallIndex="2" />
-            <DataItem Name="SmoothEnable" DataType="Single" DefaultTerminalDirection="Input" CallUsage="Optional" CallDirection="Output" CallIndex="3" />
+            <DataItem Name="SmoothEnable" DataType="Boolean" DefaultTerminalDirection="Input" CallUsage="Optional" CallDirection="Output" CallIndex="3" />
             <DataItem Name="SmoothLevel" DataType="Single" DefaultTerminalDirection="Input" CallUsage="Optional" CallDirection="Output" CallIndex="4" />
             <FrontPanel>
                 <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
@@ -64,9 +64,9 @@
                     <Terminal Id="SequenceIn" Direction="Input" Wire="wS3" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
                     <Terminal Id="SequenceOut" Direction="Output" Wire="wS4" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
                 </ConfigurableMethodCall>
-                <ConfigurableMethodCall Id="n7" Bounds="260 513 101 91" Target="X3\.Lib:GlobalGetSingle">
+                <ConfigurableMethodCall Id="n7" Bounds="260 513 101 91" Target="X3\.Lib:GlobalGetBoolean">
                     <ConfigurableMethodTerminal>
-                        <Terminal Id="valueOut" Direction="Output" Wire="wSME" DataType="Single" Hotspot="0.5 1" Bounds="54 56 30 27" />
+                        <Terminal Id="valueOut" Direction="Output" Wire="wSME" DataType="Boolean" Hotspot="0.5 1" Bounds="54 56 30 27" />
                     </ConfigurableMethodTerminal>
                     <ConfigurableMethodTerminal ConfiguredValue="OFDLCS_SMOOTH">
                         <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
