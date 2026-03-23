@@ -311,50 +311,61 @@
             <Parameter Name="BlackValue" DisplayName="黒の値">
                 <Description><![CDATA[<p>黒のキャリブレーション値</p>]]></Description>
             </Parameter>
-            <Parameter Name="BaseSpeed" DisplayName="基本速度">
-                <Description><![CDATA[<p>基本速度</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MinSpeed" DisplayName="最低速度">
-                <Description><![CDATA[<p>最低速度</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MaxError" DisplayName="最大誤差">
-                <Description><![CDATA[<p>最大誤差</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothEnable" DisplayName="スムーズ有効">
-                <Description><![CDATA[<p>スムーズな速度変化を有効にする</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothLevel" DisplayName="スムーズレベル">
-                <Description><![CDATA[<p>スムーズレベル（1=即時、100=非常に緩やか）</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS1" DisplayName="生の値 CS1 出力">
-                <Description><![CDATA[<p>カラーセンサー1の生の値</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS2" DisplayName="生の値 CS2 出力">
-                <Description><![CDATA[<p>カラーセンサー2の生の値</p>]]></Description>
-            </Parameter>
             <Parameter Name="NormCS1" DisplayName="正規化 CS1 出力">
                 <Description><![CDATA[<p>カラーセンサー1の正規化値（0〜100）</p>]]></Description>
             </Parameter>
             <Parameter Name="NormCS2" DisplayName="正規化 CS2 出力">
                 <Description><![CDATA[<p>カラーセンサー2の正規化値（0〜100）</p>]]></Description>
             </Parameter>
-            <Block Mode="API_GetRawCS1" DisplayName="生の値取得 CS1">
-                <Description><![CDATA[<p>カラーセンサー1から生の反射強度値を読み取ります。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetRawCS2" DisplayName="生の値取得 CS2">
-                <Description><![CDATA[<p>カラーセンサー2から生の反射強度値を読み取ります。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS1" DisplayName="正規化取得 CS1">
-                <Description><![CDATA[<p>カラーセンサー1の値を読み取り、0〜100に正規化します。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS2" DisplayName="正規化取得 CS2">
-                <Description><![CDATA[<p>カラーセンサー2の値を読み取り、0〜100に正規化します。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetBothNorm" DisplayName="両方の正規化取得">
-                <Description><![CDATA[<p>両方のカラーセンサー値を読み取り、0〜100に正規化します。</p>]]></Description>
-            </Block>
+            <Parameter Name="Error" DisplayName="誤差出力">
+                <Description><![CDATA[<p>CS1正規化値 − CS2正規化値（−100〜100）</p>]]></Description>
+            </Parameter>
             <Block Mode="Configuration" DisplayName="API 設定">
-                <Description><![CDATA[<p>カラーセンサーAPIのポート番号とコントローラーパラメーターを設定します。</p>]]></Description>
+                <Description><![CDATA[<p>カラーセンサーAPIのポート番号とキャリブレーション値を設定します。</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateWhite" DisplayName="白キャリブレーション">
+                <Description><![CDATA[<p>CS1の現在値を白キャリブレーション値として保存します。</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateBlack" DisplayName="黒キャリブレーション">
+                <Description><![CDATA[<p>CS1の現在値を黒キャリブレーション値として保存します。</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetBothNorm" DisplayName="両センサー正規化取得">
+                <Description><![CDATA[<p>両方のカラーセンサー値を0〜100に正規化して出力します。</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetError" DisplayName="誤差取得">
+                <Description><![CDATA[<p>CS1とCS2の正規化値の差（誤差）を出力します。</p>]]></Description>
+            </Block>
+        </PolyGroup>
+        <PolyGroup Name="OFDL Motor API" DisplayName="モーターAPI - OFDL Dev." DisplayNamePrefix="OFDL Motor API">
+            <Parameter Name="WheelDiamMM" DisplayName="車輪直径（mm）">
+                <Description><![CDATA[<p>車輪の直径（ミリメートル）</p>]]></Description>
+            </Parameter>
+            <Parameter Name="TrackWidthMM" DisplayName="ホイールベース（mm）">
+                <Description><![CDATA[<p>左右の車輪間の距離（ミリメートル）</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistB" DisplayName="B走行距離（mm）">
+                <Description><![CDATA[<p>モーターBの走行距離（ミリメートル）</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistC" DisplayName="C走行距離（mm）">
+                <Description><![CDATA[<p>モーターCの走行距離（ミリメートル）</p>]]></Description>
+            </Parameter>
+            <Parameter Name="HeadingDeg" DisplayName="方向（度）">
+                <Description><![CDATA[<p>エンコーダー差から推定した旋回角度（度）</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="モーターAPI設定">
+                <Description><![CDATA[<p>車輪直径とホイールベースを設定します。</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistB" DisplayName="B走行距離取得">
+                <Description><![CDATA[<p>モーターBの走行距離（mm）を取得します。</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistC" DisplayName="C走行距離取得">
+                <Description><![CDATA[<p>モーターCの走行距離（mm）を取得します。</p>]]></Description>
+            </Block>
+            <Block Mode="GetHeading" DisplayName="方向取得">
+                <Description><![CDATA[<p>エンコーダー差から旋回角度（度）を推定して取得します。</p>]]></Description>
+            </Block>
+            <Block Mode="ResetOdometry" DisplayName="走行距離リセット">
+                <Description><![CDATA[<p>走行距離と方向の基準点をリセットします。</p>]]></Description>
             </Block>
         </PolyGroup>
     </PolyGroups>

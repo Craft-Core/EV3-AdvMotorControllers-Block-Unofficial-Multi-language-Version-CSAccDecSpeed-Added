@@ -311,50 +311,61 @@
             <Parameter Name="BlackValue" DisplayName="Schwarzwert">
                 <Description><![CDATA[<p>Kalibrierungswert für Schwarz</p>]]></Description>
             </Parameter>
-            <Parameter Name="BaseSpeed" DisplayName="Grundgeschwindigkeit">
-                <Description><![CDATA[<p>Grundgeschwindigkeit</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MinSpeed" DisplayName="Mindestgeschwindigkeit">
-                <Description><![CDATA[<p>Mindestgeschwindigkeit</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MaxError" DisplayName="Maximaler Fehler">
-                <Description><![CDATA[<p>Maximaler Fehler</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothEnable" DisplayName="Glättung aktivieren">
-                <Description><![CDATA[<p>Sanften Geschwindigkeitsübergang aktivieren</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothLevel" DisplayName="Glättungsstufe">
-                <Description><![CDATA[<p>Glättungsstufe (1=sofort, 100=sehr allmählich)</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS1" DisplayName="Rohdaten CS1 Ausgang">
-                <Description><![CDATA[<p>Rohdatenwert von Farbsensor 1</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS2" DisplayName="Rohdaten CS2 Ausgang">
-                <Description><![CDATA[<p>Rohdatenwert von Farbsensor 2</p>]]></Description>
-            </Parameter>
             <Parameter Name="NormCS1" DisplayName="Normierter CS1 Ausgang">
                 <Description><![CDATA[<p>Normierter Wert von Farbsensor 1 (0-100)</p>]]></Description>
             </Parameter>
             <Parameter Name="NormCS2" DisplayName="Normierter CS2 Ausgang">
                 <Description><![CDATA[<p>Normierter Wert von Farbsensor 2 (0-100)</p>]]></Description>
             </Parameter>
-            <Block Mode="API_GetRawCS1" DisplayName="Rohdaten CS1 lesen">
-                <Description><![CDATA[<p>Liest den rohen Reflexionsintensitätswert von Farbsensor 1.</p>]]></Description>
+            <Parameter Name="Error" DisplayName="Fehler Ausgang">
+                <Description><![CDATA[<p>CS1 normiert minus CS2 normiert (-100 bis 100)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="API-Konfiguration">
+                <Description><![CDATA[<p>Speichert Anschlussnummern und Kalibrierungswerte für die Farbsensor-API.</p>]]></Description>
             </Block>
-            <Block Mode="API_GetRawCS2" DisplayName="Rohdaten CS2 lesen">
-                <Description><![CDATA[<p>Liest den rohen Reflexionsintensitätswert von Farbsensor 2.</p>]]></Description>
+            <Block Mode="CalibrateWhite" DisplayName="Kalibriere Weiß">
+                <Description><![CDATA[<p>Speichert den aktuellen CS1-Wert als Weiß-Kalibrierungswert.</p>]]></Description>
             </Block>
-            <Block Mode="API_GetNormCS1" DisplayName="Normiert CS1 lesen">
-                <Description><![CDATA[<p>Liest und normiert den Wert von Farbsensor 1 auf 0-100.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS2" DisplayName="Normiert CS2 lesen">
-                <Description><![CDATA[<p>Liest und normiert den Wert von Farbsensor 2 auf 0-100.</p>]]></Description>
+            <Block Mode="CalibrateBlack" DisplayName="Kalibriere Schwarz">
+                <Description><![CDATA[<p>Speichert den aktuellen CS1-Wert als Schwarz-Kalibrierungswert.</p>]]></Description>
             </Block>
             <Block Mode="API_GetBothNorm" DisplayName="Beide normiert lesen">
                 <Description><![CDATA[<p>Liest und normiert beide Farbsensorwerte auf 0-100.</p>]]></Description>
             </Block>
-            <Block Mode="Configuration" DisplayName="API-Konfiguration">
-                <Description><![CDATA[<p>Speichert Anschlussnummern und Reglerparameter für die Farbsensor-API.</p>]]></Description>
+            <Block Mode="API_GetError" DisplayName="Fehler">
+                <Description><![CDATA[<p>Gibt die Differenz (Fehler) zwischen normiertem CS1 und CS2 aus.</p>]]></Description>
+            </Block>
+        </PolyGroup>
+        <PolyGroup Name="OFDL Motor API" DisplayName="Motor API - OFDL Dev." DisplayNamePrefix="OFDL Motor API">
+            <Parameter Name="WheelDiamMM" DisplayName="Raddurchmesser (mm)">
+                <Description><![CDATA[<p>Raddurchmesser in Millimetern</p>]]></Description>
+            </Parameter>
+            <Parameter Name="TrackWidthMM" DisplayName="Spurbreite (mm)">
+                <Description><![CDATA[<p>Abstand zwischen linkem und rechtem Rad in Millimetern</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistB" DisplayName="Distanz B (mm)">
+                <Description><![CDATA[<p>Fahrstrecke von Motor B in Millimetern</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistC" DisplayName="Distanz C (mm)">
+                <Description><![CDATA[<p>Fahrstrecke von Motor C in Millimetern</p>]]></Description>
+            </Parameter>
+            <Parameter Name="HeadingDeg" DisplayName="Richtung (Grad)">
+                <Description><![CDATA[<p>Geschätzter Drehwinkel in Grad aus Encoderdifferenz</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="Motor API Konfiguration">
+                <Description><![CDATA[<p>Speichert Raddurchmesser und Spurbreite.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistB" DisplayName="Distanz B">
+                <Description><![CDATA[<p>Gibt die Fahrstrecke von Motor B in mm zurück.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistC" DisplayName="Distanz C">
+                <Description><![CDATA[<p>Gibt die Fahrstrecke von Motor C in mm zurück.</p>]]></Description>
+            </Block>
+            <Block Mode="GetHeading" DisplayName="Richtung">
+                <Description><![CDATA[<p>Schätzt den Drehwinkel in Grad aus der Encoderdifferenz.</p>]]></Description>
+            </Block>
+            <Block Mode="ResetOdometry" DisplayName="Odometrie zurücksetzen">
+                <Description><![CDATA[<p>Setzt den Referenzpunkt für Distanz und Richtung zurück.</p>]]></Description>
             </Block>
         </PolyGroup>
     </PolyGroups>

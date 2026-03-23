@@ -311,50 +311,61 @@
             <Parameter Name="BlackValue" DisplayName="검은색 값">
                 <Description><![CDATA[<p>검은색 보정 값</p>]]></Description>
             </Parameter>
-            <Parameter Name="BaseSpeed" DisplayName="기본 속도">
-                <Description><![CDATA[<p>기본 속도</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MinSpeed" DisplayName="최소 속도">
-                <Description><![CDATA[<p>최소 속도</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MaxError" DisplayName="최대 오차">
-                <Description><![CDATA[<p>최대 오차</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothEnable" DisplayName="스무딩 활성화">
-                <Description><![CDATA[<p>부드러운 속도 전환 활성화</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothLevel" DisplayName="스무딩 레벨">
-                <Description><![CDATA[<p>스무딩 레벨 (1=즉시, 100=매우 점진적)</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS1" DisplayName="원시 CS1 출력">
-                <Description><![CDATA[<p>컬러센서 1의 원시 값</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS2" DisplayName="원시 CS2 출력">
-                <Description><![CDATA[<p>컬러센서 2의 원시 값</p>]]></Description>
-            </Parameter>
             <Parameter Name="NormCS1" DisplayName="정규화 CS1 출력">
                 <Description><![CDATA[<p>컬러센서 1의 정규화 값 (0-100)</p>]]></Description>
             </Parameter>
             <Parameter Name="NormCS2" DisplayName="정규화 CS2 출력">
                 <Description><![CDATA[<p>컬러센서 2의 정규화 값 (0-100)</p>]]></Description>
             </Parameter>
-            <Block Mode="API_GetRawCS1" DisplayName="원시 CS1 가져오기">
-                <Description><![CDATA[<p>컬러센서 1에서 반사 강도 원시 값을 읽습니다.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetRawCS2" DisplayName="원시 CS2 가져오기">
-                <Description><![CDATA[<p>컬러센서 2에서 반사 강도 원시 값을 읽습니다.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS1" DisplayName="정규화 CS1 가져오기">
-                <Description><![CDATA[<p>컬러센서 1 값을 읽고 0-100으로 정규화합니다.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS2" DisplayName="정규화 CS2 가져오기">
-                <Description><![CDATA[<p>컬러센서 2 값을 읽고 0-100으로 정규화합니다.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetBothNorm" DisplayName="양쪽 정규화 가져오기">
-                <Description><![CDATA[<p>두 컬러센서 값을 모두 읽고 0-100으로 정규화합니다.</p>]]></Description>
-            </Block>
+            <Parameter Name="Error" DisplayName="Error Output">
+                <Description><![CDATA[<p>CS1 normalized minus CS2 normalized (-100 to 100)</p>]]></Description>
+            </Parameter>
             <Block Mode="Configuration" DisplayName="API 구성">
-                <Description><![CDATA[<p>컬러센서 API의 포트 번호와 컨트롤러 파라미터를 저장합니다.</p>]]></Description>
+                <Description><![CDATA[<p>컬러센서 API의 포트 번호와 보정 값을 저장합니다.</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateWhite" DisplayName="Calibrate White">
+                <Description><![CDATA[<p>Saves the current CS1 value as the white calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateBlack" DisplayName="Calibrate Black">
+                <Description><![CDATA[<p>Saves the current CS1 value as the black calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetBothNorm" DisplayName="Get Both Normalized">
+                <Description><![CDATA[<p>Reads and normalizes both color sensor values to 0-100.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetError" DisplayName="Get Error">
+                <Description><![CDATA[<p>Outputs the difference (error) between normalized CS1 and CS2 values.</p>]]></Description>
+            </Block>
+        </PolyGroup>
+        <PolyGroup Name="OFDL Motor API" DisplayName="Motor API - OFDL Dev." DisplayNamePrefix="OFDL Motor API">
+            <Parameter Name="WheelDiamMM" DisplayName="Wheel Diameter (mm)">
+                <Description><![CDATA[<p>Wheel diameter in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="TrackWidthMM" DisplayName="Track Width (mm)">
+                <Description><![CDATA[<p>Distance between left and right wheels in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistB" DisplayName="Distance B (mm)">
+                <Description><![CDATA[<p>Travel distance of motor B in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistC" DisplayName="Distance C (mm)">
+                <Description><![CDATA[<p>Travel distance of motor C in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="HeadingDeg" DisplayName="Heading (degrees)">
+                <Description><![CDATA[<p>Estimated heading angle in degrees from encoder difference</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="Motor API Config">
+                <Description><![CDATA[<p>Stores wheel diameter and track width configuration.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistB" DisplayName="Get Distance B">
+                <Description><![CDATA[<p>Gets the travel distance of motor B in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistC" DisplayName="Get Distance C">
+                <Description><![CDATA[<p>Gets the travel distance of motor C in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetHeading" DisplayName="Get Heading">
+                <Description><![CDATA[<p>Estimates heading angle in degrees from encoder difference.</p>]]></Description>
+            </Block>
+            <Block Mode="ResetOdometry" DisplayName="Reset Odometry">
+                <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
     </PolyGroups>

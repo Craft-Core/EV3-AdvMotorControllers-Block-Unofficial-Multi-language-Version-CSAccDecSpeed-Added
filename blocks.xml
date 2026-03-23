@@ -483,41 +483,31 @@
 			</Block>
 		</PolyGroup>
 		<PolyGroup Name="OFDL CS API" BlockFamily="DataOperations">
-			<Parameter Name="CS1Port" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Input" DefaultValue="1"/>
-			<Parameter Name="CS2Port" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Input" DefaultValue="2"/>
+			<Parameter Name="CS1Port" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Input" DefaultValue="1.2"/>
+			<Parameter Name="CS2Port" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Input" DefaultValue="1.3"/>
 			<Parameter Name="WhiteValue" Identification="builtin://Identification_Speed_Plus75.png" DataType="Single" Direction="Input" DefaultValue="100"/>
 			<Parameter Name="BlackValue" Identification="builtin://Identification_Speed_Plus25.png" DataType="Single" Direction="Input" DefaultValue="0"/>
-			<Parameter Name="BaseSpeed" Identification="builtin://Identification_Speed_Plus75.png" DataType="Single" Direction="Input" DefaultValue="50" MinValue="-100" MaxValue="100"/>
-			<Parameter Name="MinSpeed" Identification="builtin://Identification_Speed_Plus25.png" DataType="Single" Direction="Input" DefaultValue="10" MinValue="0" MaxValue="100"/>
-			<Parameter Name="MaxError" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="100"/>
-			<Parameter Name="SmoothEnable" Identification="builtin://Identification_Logic.png" DataType="Boolean" Direction="Input" DefaultValue="False"/>
-			<Parameter Name="SmoothLevel" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="10" MinValue="1" MaxValue="100"/>
-			<Parameter Name="RawCS1" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Output"/>
-			<Parameter Name="RawCS2" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Output"/>
 			<Parameter Name="NormCS1" Identification="builtin://Identification_SensorPort_0.png" DataType="Single" Direction="Output"/>
 			<Parameter Name="NormCS2" Identification="builtin://Identification_SensorPort_1.png" DataType="Single" Direction="Output"/>
+			<Parameter Name="Error" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Output"/>
 			<Block>
-				<Mode>API_GetRawCS1</Mode>
-				<Reference Type="VILib" Name="OFDL_API_GetRawCS1.vix"/>
-				<ParameterReference Name="RawCS1"/>
+				<Mode>Configuration</Mode>
+				<Reference Type="VILib" Name="OFDL_API_Conf.vix"/>
+				<ParameterReference Name="CS1Port"/>
+				<ParameterReference Name="CS2Port"/>
+				<ParameterReference Name="WhiteValue"/>
+				<ParameterReference Name="BlackValue"/>
+				<PaletteInfo Weight="0.5"/>
 				<Flags>PBROnly</Flags>
 			</Block>
 			<Block>
-				<Mode>API_GetRawCS2</Mode>
-				<Reference Type="VILib" Name="OFDL_API_GetRawCS2.vix"/>
-				<ParameterReference Name="RawCS2"/>
+				<Mode>CalibrateWhite</Mode>
+				<Reference Type="VILib" Name="OFDL_API_CalibrateWhite.vix"/>
 				<Flags>PBROnly</Flags>
 			</Block>
 			<Block>
-				<Mode>API_GetNormCS1</Mode>
-				<Reference Type="VILib" Name="OFDL_API_GetNormCS1.vix"/>
-				<ParameterReference Name="NormCS1"/>
-				<Flags>PBROnly</Flags>
-			</Block>
-			<Block>
-				<Mode>API_GetNormCS2</Mode>
-				<Reference Type="VILib" Name="OFDL_API_GetNormCS2.vix"/>
-				<ParameterReference Name="NormCS2"/>
+				<Mode>CalibrateBlack</Mode>
+				<Reference Type="VILib" Name="OFDL_API_CalibrateBlack.vix"/>
 				<Flags>PBROnly</Flags>
 			</Block>
 			<Block>
@@ -528,18 +518,47 @@
 				<Flags>PBROnly</Flags>
 			</Block>
 			<Block>
+				<Mode>API_GetError</Mode>
+				<Reference Type="VILib" Name="OFDL_API_GetError.vix"/>
+				<ParameterReference Name="Error"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+		</PolyGroup>
+		<PolyGroup Name="OFDL Motor API" BlockFamily="DataOperations">
+			<Parameter Name="WheelDiamMM" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="56"/>
+			<Parameter Name="TrackWidthMM" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Input" DefaultValue="120"/>
+			<Parameter Name="DistB" Identification="builtin://Identification_B.png" DataType="Single" Direction="Output"/>
+			<Parameter Name="DistC" Identification="builtin://Identification_C.png" DataType="Single" Direction="Output"/>
+			<Parameter Name="HeadingDeg" Identification="builtin://Identification_Width.png" DataType="Single" Direction="Output"/>
+			<Block>
 				<Mode>Configuration</Mode>
-				<Reference Type="VILib" Name="OFDL_API_Conf.vix"/>
-				<ParameterReference Name="CS1Port"/>
-				<ParameterReference Name="CS2Port"/>
-				<ParameterReference Name="WhiteValue"/>
-				<ParameterReference Name="BlackValue"/>
-				<ParameterReference Name="BaseSpeed"/>
-				<ParameterReference Name="MinSpeed"/>
-				<ParameterReference Name="MaxError"/>
-				<ParameterReference Name="SmoothEnable"/>
-				<ParameterReference Name="SmoothLevel"/>
+				<Reference Type="VILib" Name="OFDL_MotorAPI_Conf.vix"/>
+				<ParameterReference Name="WheelDiamMM"/>
+				<ParameterReference Name="TrackWidthMM"/>
 				<PaletteInfo Weight="0.5"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+			<Block>
+				<Mode>GetDistB</Mode>
+				<Reference Type="VILib" Name="OFDL_MotorAPI_GetDistB.vix"/>
+				<ParameterReference Name="DistB"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+			<Block>
+				<Mode>GetDistC</Mode>
+				<Reference Type="VILib" Name="OFDL_MotorAPI_GetDistC.vix"/>
+				<ParameterReference Name="DistC"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+			<Block>
+				<Mode>GetHeading</Mode>
+				<Reference Type="VILib" Name="OFDL_MotorAPI_GetHeading.vix"/>
+				<ParameterReference Name="HeadingDeg"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+			<Block>
+				<Mode>ResetOdometry</Mode>
+				<Reference Type="VILib" Name="OFDL_MotorAPI_ResetOdometry.vix"/>
 				<Flags>PBROnly</Flags>
 			</Block>
 		</PolyGroup>

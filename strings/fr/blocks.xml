@@ -311,50 +311,61 @@
             <Parameter Name="BlackValue" DisplayName="Valeur Noire">
                 <Description><![CDATA[<p>Valeur de calibration noire</p>]]></Description>
             </Parameter>
-            <Parameter Name="BaseSpeed" DisplayName="Vitesse de Base">
-                <Description><![CDATA[<p>Vitesse de base</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MinSpeed" DisplayName="Vitesse Minimale">
-                <Description><![CDATA[<p>Vitesse minimale</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MaxError" DisplayName="Erreur Maximale">
-                <Description><![CDATA[<p>Erreur maximale</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothEnable" DisplayName="Activer Lissage">
-                <Description><![CDATA[<p>Activer la transition de vitesse progressive</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothLevel" DisplayName="Niveau de Lissage">
-                <Description><![CDATA[<p>Niveau de lissage (1=instantané, 100=très progressif)</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS1" DisplayName="Sortie Brute CS1">
-                <Description><![CDATA[<p>Valeur brute du capteur couleur 1</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS2" DisplayName="Sortie Brute CS2">
-                <Description><![CDATA[<p>Valeur brute du capteur couleur 2</p>]]></Description>
-            </Parameter>
             <Parameter Name="NormCS1" DisplayName="Sortie Normalisée CS1">
                 <Description><![CDATA[<p>Valeur normalisée du capteur couleur 1 (0-100)</p>]]></Description>
             </Parameter>
             <Parameter Name="NormCS2" DisplayName="Sortie Normalisée CS2">
                 <Description><![CDATA[<p>Valeur normalisée du capteur couleur 2 (0-100)</p>]]></Description>
             </Parameter>
-            <Block Mode="API_GetRawCS1" DisplayName="Lire Brut CS1">
-                <Description><![CDATA[<p>Lit la valeur d'intensité réfléchie brute du capteur couleur 1.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetRawCS2" DisplayName="Lire Brut CS2">
-                <Description><![CDATA[<p>Lit la valeur d'intensité réfléchie brute du capteur couleur 2.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS1" DisplayName="Lire Normalisé CS1">
-                <Description><![CDATA[<p>Lit et normalise la valeur du capteur couleur 1 sur 0-100.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS2" DisplayName="Lire Normalisé CS2">
-                <Description><![CDATA[<p>Lit et normalise la valeur du capteur couleur 2 sur 0-100.</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetBothNorm" DisplayName="Lire Les Deux Normalisés">
-                <Description><![CDATA[<p>Lit et normalise les deux valeurs de capteur couleur sur 0-100.</p>]]></Description>
-            </Block>
+            <Parameter Name="Error" DisplayName="Sortie Erreur">
+                <Description><![CDATA[<p>CS1 normalisé moins CS2 normalisé (-100 à 100)</p>]]></Description>
+            </Parameter>
             <Block Mode="Configuration" DisplayName="Configuration API">
-                <Description><![CDATA[<p>Stocke les numéros de port et les paramètres du contrôleur pour l'API capteur couleur.</p>]]></Description>
+                <Description><![CDATA[<p>Stocke les numéros de port et les valeurs de calibration pour l'API capteur couleur.</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateWhite" DisplayName="Calibrate White">
+                <Description><![CDATA[<p>Saves the current CS1 value as the white calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateBlack" DisplayName="Calibrate Black">
+                <Description><![CDATA[<p>Saves the current CS1 value as the black calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetBothNorm" DisplayName="Get Both Normalized">
+                <Description><![CDATA[<p>Reads and normalizes both color sensor values to 0-100.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetError" DisplayName="Get Error">
+                <Description><![CDATA[<p>Outputs the difference (error) between normalized CS1 and CS2 values.</p>]]></Description>
+            </Block>
+        </PolyGroup>
+        <PolyGroup Name="OFDL Motor API" DisplayName="Motor API - OFDL Dev." DisplayNamePrefix="OFDL Motor API">
+            <Parameter Name="WheelDiamMM" DisplayName="Wheel Diameter (mm)">
+                <Description><![CDATA[<p>Wheel diameter in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="TrackWidthMM" DisplayName="Track Width (mm)">
+                <Description><![CDATA[<p>Distance between left and right wheels in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistB" DisplayName="Distance B (mm)">
+                <Description><![CDATA[<p>Travel distance of motor B in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistC" DisplayName="Distance C (mm)">
+                <Description><![CDATA[<p>Travel distance of motor C in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="HeadingDeg" DisplayName="Heading (degrees)">
+                <Description><![CDATA[<p>Estimated heading angle in degrees from encoder difference</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="Motor API Config">
+                <Description><![CDATA[<p>Stores wheel diameter and track width configuration.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistB" DisplayName="Get Distance B">
+                <Description><![CDATA[<p>Gets the travel distance of motor B in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistC" DisplayName="Get Distance C">
+                <Description><![CDATA[<p>Gets the travel distance of motor C in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetHeading" DisplayName="Get Heading">
+                <Description><![CDATA[<p>Estimates heading angle in degrees from encoder difference.</p>]]></Description>
+            </Block>
+            <Block Mode="ResetOdometry" DisplayName="Reset Odometry">
+                <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
     </PolyGroups>

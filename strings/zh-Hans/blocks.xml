@@ -311,50 +311,61 @@
             <Parameter Name="BlackValue" DisplayName="黑色值">
                 <Description><![CDATA[<p>黑色校准值</p>]]></Description>
             </Parameter>
-            <Parameter Name="BaseSpeed" DisplayName="基础速度">
-                <Description><![CDATA[<p>基础速度</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MinSpeed" DisplayName="最低速度">
-                <Description><![CDATA[<p>最低速度</p>]]></Description>
-            </Parameter>
-            <Parameter Name="MaxError" DisplayName="最大误差">
-                <Description><![CDATA[<p>最大误差</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothEnable" DisplayName="启用平滑">
-                <Description><![CDATA[<p>启用平滑速度过渡</p>]]></Description>
-            </Parameter>
-            <Parameter Name="SmoothLevel" DisplayName="平滑等级">
-                <Description><![CDATA[<p>平滑等级（1=立即，100=非常缓慢）</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS1" DisplayName="原始CS1输出">
-                <Description><![CDATA[<p>颜色传感器1的原始值</p>]]></Description>
-            </Parameter>
-            <Parameter Name="RawCS2" DisplayName="原始CS2输出">
-                <Description><![CDATA[<p>颜色传感器2的原始值</p>]]></Description>
-            </Parameter>
             <Parameter Name="NormCS1" DisplayName="归一化CS1输出">
                 <Description><![CDATA[<p>颜色传感器1的归一化值（0-100）</p>]]></Description>
             </Parameter>
             <Parameter Name="NormCS2" DisplayName="归一化CS2输出">
                 <Description><![CDATA[<p>颜色传感器2的归一化值（0-100）</p>]]></Description>
             </Parameter>
-            <Block Mode="API_GetRawCS1" DisplayName="获取原始CS1">
-                <Description><![CDATA[<p>从颜色传感器1读取原始反射强度值。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetRawCS2" DisplayName="获取原始CS2">
-                <Description><![CDATA[<p>从颜色传感器2读取原始反射强度值。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS1" DisplayName="获取归一化CS1">
-                <Description><![CDATA[<p>读取颜色传感器1的值并归一化至0-100。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetNormCS2" DisplayName="获取归一化CS2">
-                <Description><![CDATA[<p>读取颜色传感器2的值并归一化至0-100。</p>]]></Description>
-            </Block>
-            <Block Mode="API_GetBothNorm" DisplayName="获取两者归一化">
-                <Description><![CDATA[<p>读取两个颜色传感器的值并归一化至0-100。</p>]]></Description>
-            </Block>
+            <Parameter Name="Error" DisplayName="Error Output">
+                <Description><![CDATA[<p>CS1 normalized minus CS2 normalized (-100 to 100)</p>]]></Description>
+            </Parameter>
             <Block Mode="Configuration" DisplayName="API配置">
-                <Description><![CDATA[<p>存储颜色传感器API的端口号和控制器参数。</p>]]></Description>
+                <Description><![CDATA[<p>存储颜色传感器API的端口号和校准值。</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateWhite" DisplayName="Calibrate White">
+                <Description><![CDATA[<p>Saves the current CS1 value as the white calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="CalibrateBlack" DisplayName="Calibrate Black">
+                <Description><![CDATA[<p>Saves the current CS1 value as the black calibration value.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetBothNorm" DisplayName="Get Both Normalized">
+                <Description><![CDATA[<p>Reads and normalizes both color sensor values to 0-100.</p>]]></Description>
+            </Block>
+            <Block Mode="API_GetError" DisplayName="Get Error">
+                <Description><![CDATA[<p>Outputs the difference (error) between normalized CS1 and CS2 values.</p>]]></Description>
+            </Block>
+        </PolyGroup>
+        <PolyGroup Name="OFDL Motor API" DisplayName="Motor API - OFDL Dev." DisplayNamePrefix="OFDL Motor API">
+            <Parameter Name="WheelDiamMM" DisplayName="Wheel Diameter (mm)">
+                <Description><![CDATA[<p>Wheel diameter in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="TrackWidthMM" DisplayName="Track Width (mm)">
+                <Description><![CDATA[<p>Distance between left and right wheels in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistB" DisplayName="Distance B (mm)">
+                <Description><![CDATA[<p>Travel distance of motor B in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="DistC" DisplayName="Distance C (mm)">
+                <Description><![CDATA[<p>Travel distance of motor C in millimeters</p>]]></Description>
+            </Parameter>
+            <Parameter Name="HeadingDeg" DisplayName="Heading (degrees)">
+                <Description><![CDATA[<p>Estimated heading angle in degrees from encoder difference</p>]]></Description>
+            </Parameter>
+            <Block Mode="Configuration" DisplayName="Motor API Config">
+                <Description><![CDATA[<p>Stores wheel diameter and track width configuration.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistB" DisplayName="Get Distance B">
+                <Description><![CDATA[<p>Gets the travel distance of motor B in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetDistC" DisplayName="Get Distance C">
+                <Description><![CDATA[<p>Gets the travel distance of motor C in mm.</p>]]></Description>
+            </Block>
+            <Block Mode="GetHeading" DisplayName="Get Heading">
+                <Description><![CDATA[<p>Estimates heading angle in degrees from encoder difference.</p>]]></Description>
+            </Block>
+            <Block Mode="ResetOdometry" DisplayName="Reset Odometry">
+                <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
     </PolyGroups>

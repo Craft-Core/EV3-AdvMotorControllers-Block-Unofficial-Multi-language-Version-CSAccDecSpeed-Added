@@ -4,10 +4,6 @@
         <VirtualInstrument IsTopLevel="false" IsReentrant="false" Version="1.0.2.0" xmlns="http://www.ni.com/VirtualInstrument.xsd">
             <DataItem Name="SequenceIn" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Output" CallUsage="None" CallDirection="Input" CallIndex="9" />
             <DataItem Name="SequenceOut" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" DefaultTerminalDirection="Input" CallUsage="None" CallDirection="Output" CallIndex="9" />
-            <DataItem Name="CS1Port" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="0" DefaultValue="1.2" />
-            <DataItem Name="CS2Port" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="1" DefaultValue="1.3" />
-            <DataItem Name="WhiteValue" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="2" DefaultValue="100" />
-            <DataItem Name="BlackValue" DataType="Single" DefaultTerminalDirection="Output" CallUsage="Optional" CallDirection="Input" CallIndex="3" DefaultValue="0" />
             <FrontPanel>
                 <fpruntime:FrontPanelCanvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:Model0="clr-namespace:NationalInstruments.SourceModel.Designer;assembly=NationalInstruments.SourceModel" x:Name="FrontPanel" Model0:DesignerSurfaceProperties.CanSnapToObjects="True" Model0:DesignerSurfaceProperties.SnapToObjects="True" Model0:DesignerSurfaceProperties.ShowSnaplines="True" Model0:DesignerSurfaceProperties.ShowControlAdorners="True" Width="640" Height="480" />
             </FrontPanel>
@@ -15,27 +11,44 @@
                 <DataAccessor DataItem="SequenceIn" Id="n21" Bounds="100 180 98 14">
                     <Terminal Id="Value" Direction="Output" Wire="wS1" Hotspot="1 0.5" Bounds="0 0 98 14" />
                 </DataAccessor>
-                <DataAccessor DataItem="SequenceOut" Id="n22" Bounds="500 180 105 14">
-                    <Terminal Id="Value" Direction="Input" Wire="wS5" Hotspot="0 0.5" Bounds="0 0 105 14" />
+                <DataAccessor DataItem="SequenceOut" Id="n22" Bounds="700 180 105 14">
+                    <Terminal Id="Value" Direction="Input" Wire="wS3" Hotspot="0 0.5" Bounds="0 0 105 14" />
                 </DataAccessor>
-                <DataAccessor DataItem="CS1Port" Id="n10" Bounds="100 290 84 14">
-                    <Terminal Id="Numeric" Direction="Output" Wire="wCS1" Hotspot="1 0.5" Bounds="0 0 84 14" />
-                </DataAccessor>
-                <DataAccessor DataItem="CS2Port" Id="n11" Bounds="100 390 84 14">
-                    <Terminal Id="Numeric" Direction="Output" Wire="wCS2" Hotspot="1 0.5" Bounds="0 0 84 14" />
-                </DataAccessor>
-                <DataAccessor DataItem="WhiteValue" Id="n12" Bounds="100 490 84 14">
-                    <Terminal Id="Numeric" Direction="Output" Wire="wWH" Hotspot="1 0.5" Bounds="0 0 84 14" />
-                </DataAccessor>
-                <DataAccessor DataItem="BlackValue" Id="n13" Bounds="100 590 84 14">
-                    <Terminal Id="Numeric" Direction="Output" Wire="wBK" Hotspot="1 0.5" Bounds="0 0 84 14" />
-                </DataAccessor>
-                <ConfigurableMethodCall Id="nSP1" Bounds="260 263 101 91" Target="X3\.Lib:GlobalSetSingle">
-                    <ConfigurableMethodTerminal ConfiguredValue="OFDLAPI_CS1PORT">
+                <!-- Read encoder B - no sequence -->
+                <MethodCall Id="nEncB" Bounds="364 294 28 70" Target="X3\.Lib:PBrickInputReadySI">
+                    <Terminal Id="layer" Direction="Input" Wire="wLayerB" DataType="SByte" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="port" Direction="Input" Wire="wPortB" DataType="SByte" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="type" Direction="Input" Wire="wTypeB" DataType="SByte" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                    <Terminal Id="Mode" Direction="Input" Wire="wModeB" DataType="SByte" Hotspot="0 0.5" Bounds="0 42 14 14" />
+                    <Terminal Id="ValueCount" Direction="Input" Wire="wVCB" DataType="SByte" Hotspot="0 0.5" Bounds="0 56 14 14" />
+                    <Terminal Id="Value" Direction="Output" Wire="wEncB" DataType="Single" Hotspot="1 0.5" Bounds="14 0 14 14" />
+                </MethodCall>
+                <Literal Id="lLayerB" Terminals="Out=wLayerB" Bounds="315 294 28 14" Interpretation="Exact" DataType="SByte">0</Literal>
+                <Literal Id="lPortB" Terminals="Out=wPortB" Bounds="315 308 28 14" Interpretation="Exact" DataType="SByte">17</Literal>
+                <Literal Id="lTypeB" Terminals="Out=wTypeB" Bounds="315 322 28 14" Interpretation="Exact" DataType="Byte">0</Literal>
+                <Literal Id="lModeB" Terminals="Out=wModeB" Bounds="315 336 28 14" Interpretation="Exact" DataType="Byte">0</Literal>
+                <Literal Id="lVCB" Terminals="Out=wVCB" Bounds="315 350 28 14" Interpretation="Exact" DataType="Byte">1</Literal>
+                <!-- Read encoder C - no sequence -->
+                <MethodCall Id="nEncC" Bounds="364 394 28 70" Target="X3\.Lib:PBrickInputReadySI">
+                    <Terminal Id="layer" Direction="Input" Wire="wLayerC" DataType="SByte" Hotspot="0 0.5" Bounds="0 0 14 14" />
+                    <Terminal Id="port" Direction="Input" Wire="wPortC" DataType="SByte" Hotspot="0 0.5" Bounds="0 14 14 14" />
+                    <Terminal Id="type" Direction="Input" Wire="wTypeC" DataType="SByte" Hotspot="0 0.5" Bounds="0 28 14 14" />
+                    <Terminal Id="Mode" Direction="Input" Wire="wModeC" DataType="SByte" Hotspot="0 0.5" Bounds="0 42 14 14" />
+                    <Terminal Id="ValueCount" Direction="Input" Wire="wVCC" DataType="SByte" Hotspot="0 0.5" Bounds="0 56 14 14" />
+                    <Terminal Id="Value" Direction="Output" Wire="wEncC" DataType="Single" Hotspot="1 0.5" Bounds="14 0 14 14" />
+                </MethodCall>
+                <Literal Id="lLayerC" Terminals="Out=wLayerC" Bounds="315 394 28 14" Interpretation="Exact" DataType="SByte">0</Literal>
+                <Literal Id="lPortC" Terminals="Out=wPortC" Bounds="315 408 28 14" Interpretation="Exact" DataType="SByte">18</Literal>
+                <Literal Id="lTypeC" Terminals="Out=wTypeC" Bounds="315 422 28 14" Interpretation="Exact" DataType="Byte">0</Literal>
+                <Literal Id="lModeC" Terminals="Out=wModeC" Bounds="315 436 28 14" Interpretation="Exact" DataType="Byte">0</Literal>
+                <Literal Id="lVCC" Terminals="Out=wVCC" Bounds="315 450 28 14" Interpretation="Exact" DataType="Byte">1</Literal>
+                <!-- Save base encoder B -->
+                <ConfigurableMethodCall Id="nSSB" Bounds="260 263 101 91" Target="X3\.Lib:GlobalSetSingle">
+                    <ConfigurableMethodTerminal ConfiguredValue="OFDLMTR_BASEENC_B">
                         <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
                     </ConfigurableMethodTerminal>
                     <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="valueIn" Direction="Input" Wire="wCS1" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
+                        <Terminal Id="valueIn" Direction="Input" Wire="wEncB" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
                     </ConfigurableMethodTerminal>
                     <ConfigurableMethodTerminal ConfiguredValue="0">
                         <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 14 14 14" />
@@ -43,12 +56,13 @@
                     <Terminal Id="SequenceIn" Direction="Input" Wire="wS1" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
                     <Terminal Id="SequenceOut" Direction="Output" Wire="wS2" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
                 </ConfigurableMethodCall>
-                <ConfigurableMethodCall Id="nSP2" Bounds="260 363 101 91" Target="X3\.Lib:GlobalSetSingle">
-                    <ConfigurableMethodTerminal ConfiguredValue="OFDLAPI_CS2PORT">
+                <!-- Save base encoder C -->
+                <ConfigurableMethodCall Id="nSSC" Bounds="460 263 101 91" Target="X3\.Lib:GlobalSetSingle">
+                    <ConfigurableMethodTerminal ConfiguredValue="OFDLMTR_BASEENC_C">
                         <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
                     </ConfigurableMethodTerminal>
                     <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="valueIn" Direction="Input" Wire="wCS2" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
+                        <Terminal Id="valueIn" Direction="Input" Wire="wEncC" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
                     </ConfigurableMethodTerminal>
                     <ConfigurableMethodTerminal ConfiguredValue="0">
                         <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 14 14 14" />
@@ -56,41 +70,11 @@
                     <Terminal Id="SequenceIn" Direction="Input" Wire="wS2" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
                     <Terminal Id="SequenceOut" Direction="Output" Wire="wS3" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
                 </ConfigurableMethodCall>
-                <ConfigurableMethodCall Id="nSWH" Bounds="260 463 101 91" Target="X3\.Lib:GlobalSetSingle">
-                    <ConfigurableMethodTerminal ConfiguredValue="OFDLCS_CAL_WHITE">
-                        <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
-                    </ConfigurableMethodTerminal>
-                    <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="valueIn" Direction="Input" Wire="wWH" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
-                    </ConfigurableMethodTerminal>
-                    <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 14 14 14" />
-                    </ConfigurableMethodTerminal>
-                    <Terminal Id="SequenceIn" Direction="Input" Wire="wS3" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
-                    <Terminal Id="SequenceOut" Direction="Output" Wire="wS4" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
-                </ConfigurableMethodCall>
-                <ConfigurableMethodCall Id="nSBK" Bounds="260 563 101 91" Target="X3\.Lib:GlobalSetSingle">
-                    <ConfigurableMethodTerminal ConfiguredValue="OFDLCS_CAL_BLACK">
-                        <Terminal Id="name" Direction="Input" DataType="String" Hotspot="0.5 1" Bounds="0 0 0 0" />
-                    </ConfigurableMethodTerminal>
-                    <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="valueIn" Direction="Input" Wire="wBK" DataType="Single" Hotspot="0 0.5" Bounds="0 47 14 14" />
-                    </ConfigurableMethodTerminal>
-                    <ConfigurableMethodTerminal ConfiguredValue="0">
-                        <Terminal Id="InterruptsToListenFor_16B03592_CD76_4D58_8DC3_E3C3091E327A" Direction="Input" DataType="Int32" Hotspot="0 0.5" Bounds="0 14 14 14" />
-                    </ConfigurableMethodTerminal>
-                    <Terminal Id="SequenceIn" Direction="Input" Wire="wS4" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="0 0.5" Bounds="0 33 18 18" />
-                    <Terminal Id="SequenceOut" Direction="Output" Wire="wS5" DataType="NationalInstruments:SourceModel:DataTypes:X3SequenceWireDataType" Hotspot="1 0.5" Bounds="83 33 18 18" />
-                </ConfigurableMethodCall>
-                <Wire Id="wS1" Joints="N(n21:Value) N(nSP1:SequenceIn)" />
-                <Wire Id="wS2" Joints="N(nSP1:SequenceOut) N(nSP2:SequenceIn)" />
-                <Wire Id="wS3" Joints="N(nSP2:SequenceOut) N(nSWH:SequenceIn)" />
-                <Wire Id="wS4" Joints="N(nSWH:SequenceOut) N(nSBK:SequenceIn)" />
-                <Wire Id="wS5" Joints="N(nSBK:SequenceOut) N(n22:Value)" />
-                <Wire Id="wCS1" Joints="N(n10:Numeric) N(nSP1:valueIn)" />
-                <Wire Id="wCS2" Joints="N(n11:Numeric) N(nSP2:valueIn)" />
-                <Wire Id="wWH" Joints="N(n12:Numeric) N(nSWH:valueIn)" />
-                <Wire Id="wBK" Joints="N(n13:Numeric) N(nSBK:valueIn)" />
+                <Wire Id="wS1" Joints="N(n21:Value) N(nSSB:SequenceIn)" />
+                <Wire Id="wS2" Joints="N(nSSB:SequenceOut) N(nSSC:SequenceIn)" />
+                <Wire Id="wS3" Joints="N(nSSC:SequenceOut) N(n22:Value)" />
+                <Wire Id="wEncB" Joints="N(nEncB:Value) N(nSSB:valueIn)" />
+                <Wire Id="wEncC" Joints="N(nEncC:Value) N(nSSC:valueIn)" />
             </BlockDiagram>
             <Icon>
                 <Model:IconPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Model="clr-namespace:NationalInstruments.LabVIEW.VI.Design;assembly=NationalInstruments.LabVIEW.VI.SourceModel" xmlns:fpruntime="clr-namespace:NationalInstruments.LabVIEW.FrontPanelRuntime;assembly=NationalInstruments.LabVIEW.FrontPanelRuntime" xmlns:ation="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="56" Width="56">
