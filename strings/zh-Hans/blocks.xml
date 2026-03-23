@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="行驶评分" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>左侧颜色传感器归一化值 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>右侧颜色传感器归一化值 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="评分">
+                <Description><![CDATA[<p>行驶评分 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="振动次数">
+                <Description><![CDATA[<p>方向反转（振动）次数</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="重置">
+                <Description><![CDATA[<p>重置评分和振动计数器</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="更新">
+                <Description><![CDATA[<p>更新行驶评分和振动次数</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

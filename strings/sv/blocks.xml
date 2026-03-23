@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Koer-score" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Vanster fargsensor normaliserad (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Hoger fargsensor normaliserad (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Poang">
+                <Description><![CDATA[<p>Kor-score (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Vibrationer">
+                <Description><![CDATA[<p>Antal riktningsbyten (vibrationer)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Aterstall">
+                <Description><![CDATA[<p>Aterstall score och vibrationraknare</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Uppdatera">
+                <Description><![CDATA[<p>Uppdatera kor-score och antal vibrationer</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

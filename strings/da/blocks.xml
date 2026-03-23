@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Koere-score" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Venstre fartsensor normaliseret (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Hoejre fartsensor normaliseret (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Score">
+                <Description><![CDATA[<p>Koerescore (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Vibrationer">
+                <Description><![CDATA[<p>Antal retningsskift (vibrationer)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Nulstil">
+                <Description><![CDATA[<p>Nulstil score og vibrationstaeller</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Opdater">
+                <Description><![CDATA[<p>Opdater koerscore og antal vibrationer</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

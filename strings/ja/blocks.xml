@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>走行距離と方向の基準点をリセットします。</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="走行スコア" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1値(0-100)">
+                <Description><![CDATA[<p>左カラーセンサーの正規化値(0〜100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2値(0-100)">
+                <Description><![CDATA[<p>右カラーセンサーの正規化値(0〜100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="スコア">
+                <Description><![CDATA[<p>走行スコア(0〜100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="振動回数">
+                <Description><![CDATA[<p>方向転換（振動）の回数</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="リセット">
+                <Description><![CDATA[<p>スコアと振動カウンターをリセットする</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="更新">
+                <Description><![CDATA[<p>走行スコアと振動回数を更新する</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

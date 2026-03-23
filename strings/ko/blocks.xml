@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="주행 점수" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>왼쪽 컬러 센서 정규화값 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>오른쪽 컬러 센서 정규화값 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="점수">
+                <Description><![CDATA[<p>주행 점수 (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="진동수">
+                <Description><![CDATA[<p>방향 전환(진동) 횟수</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="초기화">
+                <Description><![CDATA[<p>점수와 진동 카운터 초기화</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="업데이트">
+                <Description><![CDATA[<p>주행 점수와 진동 횟수 업데이트</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

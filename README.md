@@ -30,6 +30,7 @@ WRO robots need to be **fast, accurate, and consistent**. The built-in EV3-G blo
 | **CS Calibration** | Normalizes raw color sensor values to 0–100 using user-defined white/black calibration points |
 | **OFDL CS API** | High-level color sensor API: configure ports & calibration, auto-calibrate white/black, read both normalized values or signed error |
 | **OFDL Motor API** | Odometry API: configure wheel/track dimensions, reset encoder baseline, read distance traveled (mm) per motor, read heading change (degrees) |
+| **OFDL Driving Score** | Real-time line-following quality evaluator: drop into any drive loop to get a smoothness score (0–100) and oscillation count using two normalized color sensor values |
 | **Advanced Motor Control** | Raw and standard advanced motor power output per port |
 | **Advanced Encoder** | Reset, read angle, and read change per motor port |
 
@@ -60,6 +61,33 @@ Odometry using Motor B and C encoders. Reset baseline once, then read distance o
 | GetDistB | — | DistB | Distance traveled by Motor B since reset (mm) |
 | GetDistC | — | DistC | Distance traveled by Motor C since reset (mm) |
 | GetHeading | — | HeadingDeg | Heading change since reset (degrees, + = left turn) |
+
+### OFDL Driving Score
+
+Real-time line-following quality evaluator. Drop **Update** into your drive loop; call **Reset** once before the loop starts.
+
+**Algorithm:**
+
+- `signed_error = CS1 − CS2` — deviation from center (−100 to +100)
+- Each sample: `Score = Score × (1 − |error| × 0.0001)` — multiplicative decay from error magnitude
+- Each oscillation (sign change in error): `Score = Score × 0.95` — 5% multiplicative penalty
+- Vibration = detected when `prev_error × curr_error < 0` (sign reversal)
+
+Score approaches 0 exponentially with sustained error or frequent oscillation; smooth centered driving keeps it near 100.
+
+| Mode | Inputs | Outputs | Description |
+| ---- | ------ | ------- | ----------- |
+| Reset | — | — | Initialize Score=100, VibCount=0 (call once before loop) |
+| Update | CS1 (0–100), CS2 (0–100) | Score (0–100), VibCount | Update score and count — call every loop iteration |
+
+**Usage example:**
+
+```text
+[Reset]
+Loop:
+  [Your PD controller → motors]
+  [Update(CS1, CS2)] → Score, VibCount → Display
+```
 
 ---
 

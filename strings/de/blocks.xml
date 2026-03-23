@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Setzt den Referenzpunkt für Distanz und Richtung zurück.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Fahrt-Score" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Linker Farbsensor normalisiert (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Rechter Farbsensor normalisiert (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Punkte">
+                <Description><![CDATA[<p>Fahrt-Score (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Schwingungen">
+                <Description><![CDATA[<p>Anzahl der Richtungswechsel (Schwingungen)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Zuruecksetzen">
+                <Description><![CDATA[<p>Score und Schwingungszaehler zuruecksetzen</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Aktualisieren">
+                <Description><![CDATA[<p>Fahrt-Score und Schwingungsanzahl aktualisieren</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

@@ -562,5 +562,25 @@
 				<Flags>PBROnly</Flags>
 			</Block>
 		</PolyGroup>
+		<PolyGroup Name="OFDL Driving Score" BlockFamily="Action">
+			<Parameter Name="CS1"      Identification="builtin://Identification_A.png"                    DataType="Single"  Direction="Input"  DefaultValue="50"  MinValue="0" MaxValue="100" />
+			<Parameter Name="CS2"      Identification="builtin://Identification_B.png"                    DataType="Single"  Direction="Input"  DefaultValue="50"  MinValue="0" MaxValue="100" />
+			<Parameter Name="Score"    Identification="builtin://Identification_Speed_Plus75.png"          DataType="Single"  Direction="Output" />
+			<Parameter Name="VibCount" Identification="builtin://Identification_OutpuNumberDegrees.png"    DataType="Single"  Direction="Output" />
+			<Block>
+				<Mode>Reset</Mode>
+				<Reference Type="VILib" Name="OFDL_DrScore_Reset.vix"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+			<Block>
+				<Mode>Update</Mode>
+				<Reference Type="VILib" Name="OFDL_DrScore_Update.vix"/>
+				<ParameterReference Name="CS1"/>
+				<ParameterReference Name="CS2"/>
+				<ParameterReference Name="Score"/>
+				<ParameterReference Name="VibCount"/>
+				<Flags>PBROnly</Flags>
+			</Block>
+		</PolyGroup>
 	</PolyGroups>
 </EditorDefinitions>

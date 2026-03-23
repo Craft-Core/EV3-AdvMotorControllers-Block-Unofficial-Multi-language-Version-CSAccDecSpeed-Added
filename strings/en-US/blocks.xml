@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Driving Score" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Left color sensor normalized value (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Right color sensor normalized value (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Score">
+                <Description><![CDATA[<p>Driving score (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Vibrations">
+                <Description><![CDATA[<p>Number of direction reversals (vibrations)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Reset">
+                <Description><![CDATA[<p>Reset score and vibration counter</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Update">
+                <Description><![CDATA[<p>Update driving score and vibration count</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

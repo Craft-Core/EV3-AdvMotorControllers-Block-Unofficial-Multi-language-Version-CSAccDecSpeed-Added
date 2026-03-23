@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Rijscore" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Linker kleursensor genormaliseerd (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Rechter kleursensor genormaliseerd (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Score">
+                <Description><![CDATA[<p>Rijscore (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Vibraties">
+                <Description><![CDATA[<p>Aantal richtingsomkeringen (vibraties)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Wis">
+                <Description><![CDATA[<p>Score en vibratieteller wissen</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Bijwerken">
+                <Description><![CDATA[<p>Rijscore en aantal vibraties bijwerken</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>

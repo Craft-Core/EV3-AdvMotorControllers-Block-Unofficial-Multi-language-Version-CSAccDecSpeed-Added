@@ -368,5 +368,25 @@
                 <Description><![CDATA[<p>Resets the distance and heading reference point.</p>]]></Description>
             </Block>
         </PolyGroup>
+        <PolyGroup Name="OFDL Driving Score" DisplayName="Оценка езды" DisplayNamePrefix="OFDL Driving Score">
+            <Parameter Name="CS1" DisplayName="CS1 (0-100)">
+                <Description><![CDATA[<p>Левый датчик цвета нормализованный (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="CS2" DisplayName="CS2 (0-100)">
+                <Description><![CDATA[<p>Правый датчик цвета нормализованный (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="Score" DisplayName="Оценка">
+                <Description><![CDATA[<p>Оценка езды (0-100)</p>]]></Description>
+            </Parameter>
+            <Parameter Name="VibCount" DisplayName="Вибрации">
+                <Description><![CDATA[<p>Количество смен направления (вибрации)</p>]]></Description>
+            </Parameter>
+            <Block Mode="Reset" DisplayName="Сброс">
+                <Description><![CDATA[<p>Сбросить оценку и счетчик вибраций</p>]]></Description>
+            </Block>
+            <Block Mode="Update" DisplayName="Обновить">
+                <Description><![CDATA[<p>Обновить оценку езды и счетчик вибраций</p>]]></Description>
+            </Block>
+        </PolyGroup>
     </PolyGroups>
 </EditorStrings>
