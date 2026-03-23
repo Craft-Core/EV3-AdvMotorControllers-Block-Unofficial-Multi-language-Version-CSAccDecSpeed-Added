@@ -28,8 +28,38 @@ WRO robots need to be **fast, accurate, and consistent**. The built-in EV3-G blo
 | ----- | ----------- |
 | **Color Sensor Speed Controller** | Calculates motor speed from two color sensor values (Linear / Quadratic / Cubic / Sqrt / Step / Smooth modes) with optional smoothing |
 | **CS Calibration** | Normalizes raw color sensor values to 0–100 using user-defined white/black calibration points |
+| **OFDL CS API** | High-level color sensor API: configure ports & calibration, auto-calibrate white/black, read both normalized values or signed error |
+| **OFDL Motor API** | Odometry API: configure wheel/track dimensions, reset encoder baseline, read distance traveled (mm) per motor, read heading change (degrees) |
 | **Advanced Motor Control** | Raw and standard advanced motor power output per port |
 | **Advanced Encoder** | Reset, read angle, and read change per motor port |
+
+---
+
+## Block Details
+
+### OFDL CS API
+
+A unified color sensor pipeline. Configure once at startup, then call read modes in your loop.
+
+| Mode | Inputs | Outputs | Description |
+| ---- | ------ | ------- | ----------- |
+| Configuration | CS1Port, CS2Port, WhiteValue, BlackValue | — | Set sensor ports and calibration values |
+| CalibrateWhite | — | — | Read CS1 live and save as white reference |
+| CalibrateBlack | — | — | Read CS1 live and save as black reference |
+| GetBothNorm | — | NormCS1, NormCS2 | Both sensors normalized to 0–100 |
+| GetError | — | Error | Signed difference (CS1 − CS2), range −100 to +100 |
+
+### OFDL Motor API
+
+Odometry using Motor B and C encoders. Reset baseline once, then read distance or heading any time.
+
+| Mode | Inputs | Outputs | Description |
+| ---- | ------ | ------- | ----------- |
+| Configuration | WheelDiamMM, TrackWidthMM | — | Set robot geometry for distance/heading calculation |
+| ResetOdometry | — | — | Zero encoder baseline (call before starting movement) |
+| GetDistB | — | DistB | Distance traveled by Motor B since reset (mm) |
+| GetDistC | — | DistC | Distance traveled by Motor C since reset (mm) |
+| GetHeading | — | HeadingDeg | Heading change since reset (degrees, + = left turn) |
 
 ---
 
