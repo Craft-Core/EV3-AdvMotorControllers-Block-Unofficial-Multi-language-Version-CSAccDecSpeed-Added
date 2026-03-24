@@ -25,6 +25,32 @@ Dabei ist `f(x)` die Kurvenfunktion für den gewählten Modus:
 | `CS_Step` | `0 if x<0.5, 1 if x≥0.5` | Volle Geschwindigkeit bis zur Hälfte, dann MinSpeed |
 | `CS_Smooth` | über N Samples geglättet | Entfernt Sensorrausch-Spitzen |
 
+### Kurvenformvergleich (BaseSpeed=100, MinSpeed=0)
+
+```mermaid
+xychart-beta
+    title "Geschwindigkeit vs Normalisierter Fehler"
+    x-axis "Normalisierter Fehler" [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    y-axis "Geschwindigkeit (%)" 0 --> 100
+    line [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]
+    line [100, 99, 96, 91, 84, 75, 64, 51, 36, 19, 0]
+    line [100, 100, 99, 97, 94, 88, 78, 66, 49, 27, 0]
+    line [100, 68, 55, 45, 37, 29, 23, 16, 11, 5, 0]
+    line [100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0]
+    line [100, 97, 90, 78, 65, 50, 35, 22, 10, 3, 0]
+```
+
+| Farbe | Modus |
+|-------|-------|
+| 🔵 Blau | `CS_Linear` |
+| 🔴 Rot | `CS_Quadratic` |
+| 🟢 Grün | `CS_Cubic` |
+| 🟣 Lila | `CS_Sqrt` |
+| 🟠 Orange | `CS_Step` |
+| 🟡 Gelb | `CS_Smooth` |
+
+> ※ Farben können je nach Mermaid-Theme variieren.
+
 ---
 
 ## Einrichtung

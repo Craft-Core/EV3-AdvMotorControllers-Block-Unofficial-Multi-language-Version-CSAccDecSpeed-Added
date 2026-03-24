@@ -23,7 +23,33 @@ Where `f(x)` is the curve function for the selected mode:
 | `CS_Cubic` | `x³` | Even more aggressive near edge |
 | `CS_Sqrt` | `√x` | Fast drop near centre, gentle at edge |
 | `CS_Step` | `0 if x<0.5, 1 if x≥0.5` | Full speed until halfway, then MinSpeed |
-| `CS_Smooth` | smoothed over N samples | Removes sensor noise spikes |
+| `CS_Smooth` | `3x²−2x³` | Smooth speed transitions, removes noise |
+
+### Curve shape comparison (BaseSpeed=100, MinSpeed=0)
+
+```mermaid
+xychart-beta
+    title "Speed vs Normalised Error"
+    x-axis "Normalised Error" [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    y-axis "Speed (%)" 0 --> 100
+    line [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]
+    line [100, 99, 96, 91, 84, 75, 64, 51, 36, 19, 0]
+    line [100, 100, 99, 97, 94, 88, 78, 66, 49, 27, 0]
+    line [100, 68, 55, 45, 37, 29, 23, 16, 11, 5, 0]
+    line [100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0]
+    line [100, 97, 90, 78, 65, 50, 35, 22, 10, 3, 0]
+```
+
+| Colour | Mode |
+|--------|------|
+| 🔵 Blue | `CS_Linear` |
+| 🔴 Red | `CS_Quadratic` |
+| 🟢 Green | `CS_Cubic` |
+| 🟣 Purple | `CS_Sqrt` |
+| 🟠 Orange | `CS_Step` |
+| 🟡 Yellow | `CS_Smooth` |
+
+> ※ Colours may vary depending on Mermaid theme settings.
 
 ---
 

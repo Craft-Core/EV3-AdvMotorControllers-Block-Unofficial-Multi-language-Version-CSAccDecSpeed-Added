@@ -25,6 +25,32 @@ Dove `f(x)` è la funzione di curva per la modalità selezionata:
 | `CS_Step` | `0 if x<0.5, 1 if x≥0.5` | Velocità piena fino a metà, poi MinSpeed |
 | `CS_Smooth` | smorzato su N campioni | Elimina i picchi di rumore del sensore |
 
+### Confronto delle forme di curva (BaseSpeed=100, MinSpeed=0)
+
+```mermaid
+xychart-beta
+    title "Velocità vs Errore Normalizzato"
+    x-axis "Errore normalizzato" [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    y-axis "Velocità (%)" 0 --> 100
+    line [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]
+    line [100, 99, 96, 91, 84, 75, 64, 51, 36, 19, 0]
+    line [100, 100, 99, 97, 94, 88, 78, 66, 49, 27, 0]
+    line [100, 68, 55, 45, 37, 29, 23, 16, 11, 5, 0]
+    line [100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0]
+    line [100, 97, 90, 78, 65, 50, 35, 22, 10, 3, 0]
+```
+
+| Colore | Modalità |
+|--------|----------|
+| 🔵 Blu | `CS_Linear` |
+| 🔴 Rosso | `CS_Quadratic` |
+| 🟢 Verde | `CS_Cubic` |
+| 🟣 Viola | `CS_Sqrt` |
+| 🟠 Arancione | `CS_Step` |
+| 🟡 Giallo | `CS_Smooth` |
+
+> ※ I colori possono variare in base alle impostazioni del tema Mermaid.
+
 ---
 
 ## Configurazione

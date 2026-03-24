@@ -25,6 +25,32 @@ Hvor `f(x)` er kurvefunktionen for den valgte tilstand:
 | `CS_Step` | `0 if x<0.5, 1 if x≥0.5` | Fuld hastighed til halvvejs, derefter MinSpeed |
 | `CS_Smooth` | glattet over N prøver | Fjerner sensorstøjspidser |
 
+### Sammenligning af kurvefasong (BaseSpeed=100, MinSpeed=0)
+
+```mermaid
+xychart-beta
+    title "Hastighed vs Normaliseret Fejl"
+    x-axis "Normaliseret fejl" [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    y-axis "Hastighed (%)" 0 --> 100
+    line [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0]
+    line [100, 99, 96, 91, 84, 75, 64, 51, 36, 19, 0]
+    line [100, 100, 99, 97, 94, 88, 78, 66, 49, 27, 0]
+    line [100, 68, 55, 45, 37, 29, 23, 16, 11, 5, 0]
+    line [100, 100, 100, 100, 100, 0, 0, 0, 0, 0, 0]
+    line [100, 97, 90, 78, 65, 50, 35, 22, 10, 3, 0]
+```
+
+| Farve | Tilstand |
+|-------|----------|
+| 🔵 Blå | `CS_Linear` |
+| 🔴 Rød | `CS_Quadratic` |
+| 🟢 Grøn | `CS_Cubic` |
+| 🟣 Lilla | `CS_Sqrt` |
+| 🟠 Orange | `CS_Step` |
+| 🟡 Gul | `CS_Smooth` |
+
+> ※ Farver kan variere afhængigt af Mermaid-temaindstillinger.
+
 ---
 
 ## Opsætning
