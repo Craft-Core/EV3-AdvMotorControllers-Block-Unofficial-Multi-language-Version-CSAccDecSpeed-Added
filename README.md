@@ -33,6 +33,19 @@ WRO robots need to be **fast, accurate, and consistent**. The built-in EV3-G blo
 
 ---
 
+## Usage Guides
+
+Detailed documentation for each block:
+
+| Block | Guide |
+| ----- | ----- |
+| **PD Controller** | [docs/pd-controller.md](https://github.com/Craft-Core/EV3-AdvMotorControllers-Block-Unofficial-Multi-language-Precision/blob/master/docs/pd-controller.md) |
+| **Acceleration-Deceleration Controller** | [docs/acceleration-controller.md](https://github.com/Craft-Core/EV3-AdvMotorControllers-Block-Unofficial-Multi-language-Precision/blob/master/docs/acceleration-controller.md) |
+| **Synchronous Movement Controller** | [docs/sync-controller.md](https://github.com/Craft-Core/EV3-AdvMotorControllers-Block-Unofficial-Multi-language-Precision/blob/master/docs/sync-controller.md) |
+| **Color Sensor Speed Controller** | [docs/color-sensor-speed-controller.md](https://github.com/Craft-Core/EV3-AdvMotorControllers-Block-Unofficial-Multi-language-Precision/blob/master/docs/color-sensor-speed-controller.md) |
+
+---
+
 ## Multi-Language Support
 
 All blocks are fully localized for 15 languages:
